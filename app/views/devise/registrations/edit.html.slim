@@ -1,0 +1,10 @@
+.row
+  .col-2
+  .col-8
+    .card
+      .card-header 修改用户密码
+      .card-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          = devise_error_messages!
+          .form-group.row
+            = f.label '请联系客服修改'

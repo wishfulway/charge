@@ -1,0 +1,209 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title 设备管理后台
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" /
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark style=("background-color: #999999;")
+      a.navbar-brand href="/"
+        = fa_icon "ra lg", text: "设备后台"
+      button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+        span.navbar-toggler-icon
+      - if user_signed_in?
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav
+            - if current_user.admin?
+
+            - else
+              li.nav-item.dropdown
+                a#navbarDropdown0.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 订单管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "待处理订单", "#", {class: 'dropdown-item'}
+                  .dropdown-divider
+                  = link_to "历史订单", "#", {class: 'dropdown-item'}
+              li.nav-item.dropdown
+                a#navbarDropdown1.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 账户管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "账户列表", "#", {class: 'dropdown-item'}
+                  .dropdown-divider
+                  = link_to "账户规则", "#", {class: 'dropdown-item'}
+              / li.nav-item.dropdown
+              /   a#navbarDropdown2.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              /     | 钱包管理
+              /   .dropdown-menu aria-labelledby="navbarDropdown"
+              /     = link_to "银行卡钱包", "#", {class: 'dropdown-item'}
+              /     .dropdown-divider
+              /     = link_to "QQ卡钱包", "#", {class: 'dropdown-item'}
+              /     .dropdown-divider
+              /     = link_to "Q币钱包", "#", {class: 'dropdown-item'}
+              li.nav-item.dropdown
+                a#navbarDropdown3.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 设备管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "设备列表", "#", {class: 'dropdown-item'}
+              li.nav-item.dropdown
+                a#navbarDropdown4.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 接入平台管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "平台列表", "#", {class: 'dropdown-item'}
+
+          ul.navbar-nav.ml-md-auto
+            li.nav-item
+              a.nav-link href="#"
+                span.badge.badge-danger
+                  = fa_icon "credit-card"
+                  =< "异常订单:#{}"
+            li.nav-item
+              a.nav-link href="#"
+                span.badge.badge-warning
+                  = fa_icon "flag"
+                  =< "待处理订单:#{}"
+            li.nav-item
+              a.nav-link href="#"
+                span.badge.badge-info
+                  = fa_icon " hourglass-half"
+                  =< "处理中订单:#{}"
+            li.nav-item
+              = link_to "#", class: 'nav-link' do
+                = fa_icon 'user-circle', text: "#{current_user.username}"
+            li.nav-item
+              = link_to destroy_user_session_path, method: :delete, class: "nav-link" do
+                = fa_icon "sign-out", text: "安全退出"
+      / #navbarSupportedContent.collapse.navbar-collapse
+      /   ul.navbar-nav
+      /     li.nav-item.dropdown
+      /       a#navbarDropdown2.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | 测试
+    / - if user_signed_in?
+      /   #navbarSupportedContent.collapse.navbar-collapse
+      /     ul.navbar-nav
+      /       - if current_user.admin?
+      /         /li.nav-item
+      /           a.nav-link href="#"  今日统计
+      /         li.nav-item
+      /           a.nav-link href=admin_deals_path  订单管理
+      /         li.nav-item.dropdown
+      /           a#navbarDropdown2.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+      /             |商品管理
+      /           .dropdown-menu aria-labelledby="navbarDropdown"
+      /             = link_to '管理货源', bids_admin_offers_path, class: "dropdown-item"
+      /             .dropdown-divider
+      /             = link_to '供货列表', quotes_admin_offers_path, class: "dropdown-item"
+      /             = link_to '发布供货', new_admin_offer_path, class: "dropdown-item"
+      /         li.nav-item.dropdown
+      /           a#navbarDropdown1.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+      /             |用户管理
+      /           .dropdown-menu aria-labelledby="navbarDropdown"
+      /             = link_to "用户列表", admin_users_path, {class: 'dropdown-item'}
+      /             = link_to "审核用户实名", legals_admin_users_path, {class: 'dropdown-item'}
+      /         li.nav-item.dropdown
+      /           a#navbarDropdown3.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+      /             |资金管理
+      /           .dropdown-menu aria-labelledby="navbarDropdown"
+      /             a.dropdown-item href=admin_transfers_path(op: 0)  处理用户充值
+      /             a.dropdown-item href=admin_transfers_path(op: 20)  处理用户提现
+      /             .dropdown-divider
+      /             a.dropdown-item href=admin_transfers_path(op: 20)  为用户充值
+      /             .dropdown-divider
+      /             = link_to '管理卡密', admin_cards_path, {class: 'dropdown-item'}
+      /       - else
+      /         /! ***********************
+      /         li.nav-item.dropdown
+      /           a#navbarDropdown4.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+      /             | 采购商品
+      /           .dropdown-menu aria-labelledby="navbarDropdown"
+      /             /= link_to "商品报价", offers_path, {class: 'dropdown-item'}
+      /             = link_to "商品类目", products_path, {class: 'dropdown-item'}
+      /             .dropdown-divider
+      /             /
+      /               a.dropdown-item href=my_plans_path  进货关系管理
+      /               <a class="dropdown-item" href="#">进货策略</a
+      /               <div class="dropdown-divider"></div
+      /               <a class="dropdown-item" href="#">可疑订单</a
+      /               <a class="dropdown-item" href="#">失败订单</a
+      /               <div class="dropdown-divider"></div
+      /               <a class="dropdown-item" href="#">进货交易统计</a
+      /             a.dropdown-item href=deals_path  采购交易明细
+      /             a.dropdown-item href='#' 批量订单
+      /         /! ***********************
+      /         li.nav-item.dropdown
+      /           a#navbarDropdown5.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+      /             |卖家中心
+      /             - if (@sup_waiting+@sup_processing) > 0
+      /               small.badge.badge-warning =< (@sup_waiting+@sup_processing)
+      /           .dropdown-menu aria-labelledby="navbarDropdown"
+      /             = link_to "创建货源", new_offer_path, {class: 'dropdown-item'}
+      /             = link_to "我发布的货源", my_offers_path, {class: 'dropdown-item'}
+      /             .dropdown-divider
+      /             = link_to running_tasks_path, {class: 'dropdown-item'} do
+      /               = fa_icon "flag", text: "等待处理的订单"
+      /               - if (@sup_waiting+@sup_processing) > 0
+      /                 small.badge.badge-warning =< (@sup_waiting+@sup_processing)
+      /             a.dropdown-item href=tasks_path  历史订单
+      /             .dropdown-divider
+      /             = link_to "QQ卡", qcards_path, {class: 'dropdown-item'}
+      /             /
+      /               a.dropdown-item href=mybids_plans_path  供货关系管理
+      /               .dropdown-divider
+      /               a.dropdown-item href="#"  可疑订单管理
+      /         /! ***********************
+      /         li.nav-item.dropdown
+      /           a#navbarDropdown6.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+      /             |财务中心
+      /           .dropdown-menu aria-labelledby="navbarDropdown"
+      /             = link_to "卡密充值", fillcard_transfers_path, {class: 'dropdown-item'}
+      /             = link_to "账号充值", new_transfer_path, {class: 'dropdown-item'}
+      /             = link_to "申请提现", new_transfer_path( op:'withdraw' ), {class: 'dropdown-item'}
+      /             .dropdown-divider
+      /             = link_to "充值提现记录", transfers_path, {class: 'dropdown-item'}
+      /             .dropdown-divider
+      /             = link_to "资金流水", flows_path, {class: 'dropdown-item'}
+      /
+      /     ul.navbar-nav.ml-md-auto
+      /       li.nav-item
+      /         a.nav-link href="#"
+      /           span.badge.badge-danger
+      /             = fa_icon "credit-card"
+      /             =< "可用资金:#{current_user.account.balance.to_f.round(2)}"
+      /       li.nav-item
+      /         a.nav-link href=running_tasks_path
+      /           span.badge.badge-warning
+      /             = fa_icon "flag"
+      /             =< "SUP待处理:#{@sup_waiting}"
+      /       li.nav-item
+      /         a.nav-link href=running_tasks_path
+      /           span.badge.badge-info
+      /             = fa_icon " hourglass-half"
+      /             =< "SUP处理中:#{@sup_processing}"
+      /       li.nav-item
+      /         = link_to manage_profile_path, class: 'nav-link' do
+      /           => fa_icon 'user-circle', text: "#{current_user.nick}"
+      /       li.nav-item
+      /         = link_to destroy_user_session_path, method: :delete, class:"nav-link" do
+      /           = fa_icon "sign-out", text: "安全退出"
+    .container.mt-3
+      - unless notice.blank?
+        .alert.alert-info.alert-dismissible.fade.show role="alert"
+          = notice
+          button.close aria-label="Close" data-dismiss="alert" type="button"
+            span aria-hidden="true"  ×
+      - unless alert.blank?
+        .alert.alert-warning.alert-dismissible.fade.show role="alert"
+          = alert
+          button.close aria-label="Close" data-dismiss="alert" type="button"
+            span aria-hidden="true"  ×
+      = yield
+
+    footer#sticky-footer.py-2.text-white-50.mt-5 style=("background-color: #999999;")
+      .container.text-center
+        small
+          = '供需发布请联系客服QQ: '
+          '&nbsp;
+          =< "123456"

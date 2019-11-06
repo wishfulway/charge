@@ -8,3 +8,18 @@
 
 
 
+
+# 平台管理员账号
+admin = User.new(id: Account::ADMIN_ID, username: 'admin', email: 'admin@fire-i.com', password: '123456', nickname: '管理员')
+admin.skip_confirmation!
+admin.save!
+# 测试账号
+wg = User.new(username: 'wangg', email: '363309946@qq.com', , password: '123456', nickname: '笨笨点卡')
+wg.skip_confirmation!
+wg.save!
+
+
+if Rails.env.development?
+
+
+end

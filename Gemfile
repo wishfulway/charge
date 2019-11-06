@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
+# windows bug
 # gem 'duktape'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -65,3 +66,9 @@ gem 'bootstrap', '~> 4.3.1'
 #  截止此处 没有读取 slim
 #
 gem "slim-rails"
+
+# 点击navbar-toggler 没有反应 增加jquery
+#  同时 在 application.js 中追加
+# //= require jquery3
+# //= require bootstrap-sprockets
+gem 'jquery-rails'

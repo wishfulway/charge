@@ -1,0 +1,37 @@
+.row
+  .col-md-2
+  .col-md-8
+    .card
+      .card-header
+        h5 注册
+      .card-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          /= devise_error_messages!
+          .form-group.row
+            = f.label :username, "用户名*", class: "col-md-3 col-form-label"
+            .col-md-8
+              = f.text_field :username, class: 'form-control'
+              small.text-muted.form-text = "只能使用字母数字，5到20位，不区分大小写"
+          .form-group.row
+            = f.label :email, "邮箱*", class: "col-md-3 col-form-label"
+            .col-md-8
+              = f.text_field :email, class: 'form-control'
+              small.text-muted.form-text = "很重要，激活账户，找回密码都靠他"
+          .form-group.row
+            = f.label :password, "密码*", class: "col-md-3 col-form-label"
+            .col-md-8
+              = f.password_field :password, class: 'form-control', autocomplete: "new-password"
+              small.text-muted.form-text = "至少6位，包含大小写字母、数字和特殊字符"
+          .form-group.row
+            = f.label :password_confirmation, "密码确认*", class: "col-md-3 col-form-label"
+            .col-md-8
+              = f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password"
+          .form-group.row
+            .col-md-9
+              = f.submit "注册", class: "btn btn-primary"
+          .form-group.row
+            .col-md-9
+              = render "devise/shared/links"
+  .col-md-2
+
+
