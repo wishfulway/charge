@@ -1,0 +1,21 @@
+= form_for @account_type_service do |f|
+  - if @account_type_service.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@account_type_service.errors.count, "error")} prohibited this account_type_service from being saved:"
+      ul
+        - @account_type_service.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :account_type
+    = f.text_field :account_type
+  .field
+    = f.label :service
+    = f.text_field :service
+  .field
+    = f.label :state
+    = f.number_field :state
+  .field
+    = f.label :interval
+    = f.number_field :interval
+  .actions = f.submit

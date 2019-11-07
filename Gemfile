@@ -51,7 +51,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  #
+  gem 'webdrivers', '~> 4.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -72,3 +73,7 @@ gem "slim-rails"
 # //= require jquery3
 # //= require bootstrap-sprockets
 gem 'jquery-rails'
+
+#  运行 test 报错
+# C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/activesupport-5.2.3/lib/active_support/dependencies.rb:291:in `require': cannot load such file -- resque (LoadError)
+gem "resque"

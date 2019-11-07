@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Account:
+  = @wallet.account
+p
+  strong C no:
+  = @wallet.c_no
+p
+  strong C pw:
+  = @wallet.c_pw
+p
+  strong Pay limit:
+  = @wallet.pay_limit
+p
+  strong Amount:
+  = @wallet.amount
+p
+  strong Type:
+  = @wallet.type
+p
+  strong State:
+  = @wallet.state
+
+=> link_to 'Edit', edit_wallet_path(@wallet)
+'|
+=< link_to 'Back', wallets_path

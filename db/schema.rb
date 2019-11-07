@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_021944) do
+ActiveRecord::Schema.define(version: 2019_11_07_032239) do
+
+  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", default: "账户"
+    t.string "uin"
+    t.string "uin_type"
+    t.string "type", null: false
+    t.string "status", default: "active", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "uin"], name: "index_accounts_on_user_id_and_uin", unique: true
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "username", default: "", null: false
@@ -34,4 +47,5 @@ ActiveRecord::Schema.define(version: 2019_11_06_021944) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "accounts", "users"
 end

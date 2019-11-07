@@ -14,7 +14,7 @@ admin = User.new(id: Account::ADMIN_ID, username: 'admin', email: 'admin@fire-i.
 admin.skip_confirmation!
 admin.save!
 # 测试账号
-wg = User.new(username: 'wangg', email: '363309946@qq.com', , password: '123456', nickname: '笨笨点卡')
+wg = User.new(username: 'wangg', email: '363309946@qq.com',  password: '123456', nickname: '笨笨点卡')
 wg.skip_confirmation!
 wg.save!
 

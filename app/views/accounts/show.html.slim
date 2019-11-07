@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong User:
+  = @account.user
+p
+  strong Name:
+  = @account.name
+p
+  strong Uin:
+  = @account.uin
+p
+  strong Uin type:
+  = @account.uin_type
+p
+  strong Type:
+  = @account.type
+p
+  strong Status:
+  = @account.status
+
+=> link_to 'Edit', edit_account_path(@account)
+'|
+=< link_to 'Back', accounts_path

@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Account type:
+  = @account_type_service.account_type
+p
+  strong Service:
+  = @account_type_service.service
+p
+  strong State:
+  = @account_type_service.state
+p
+  strong Interval:
+  = @account_type_service.interval
+
+=> link_to 'Edit', edit_account_type_service_path(@account_type_service)
+'|
+=< link_to 'Back', account_type_services_path

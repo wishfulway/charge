@@ -1,0 +1,27 @@
+h1 Listing account_type_services
+
+table
+  thead
+    tr
+      th Account type
+      th Service
+      th State
+      th Interval
+      th
+      th
+      th
+
+  tbody
+    - @account_type_services.each do |account_type_service|
+      tr
+        td = account_type_service.account_type
+        td = account_type_service.service
+        td = account_type_service.state
+        td = account_type_service.interval
+        td = link_to 'Show', account_type_service
+        td = link_to 'Edit', edit_account_type_service_path(account_type_service)
+        td = link_to 'Destroy', account_type_service, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Account type service', new_account_type_service_path

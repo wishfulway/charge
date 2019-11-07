@@ -1,0 +1,24 @@
+= form_for @service do |f|
+  - if @service.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@service.errors.count, "error")} prohibited this service from being saved:"
+      ul
+        - @service.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :rate
+    = f.number_field :rate
+  .field
+    = f.label :de_name
+    = f.text_field :de_name
+  .field
+    = f.label :de_type
+    = f.text_field :de_type
+  .field
+    = f.label :url
+    = f.text_field :url
+  .actions = f.submit

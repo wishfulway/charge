@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @service.name
+p
+  strong Rate:
+  = @service.rate
+p
+  strong De name:
+  = @service.de_name
+p
+  strong De type:
+  = @service.de_type
+p
+  strong Url:
+  = @service.url
+
+=> link_to 'Edit', edit_service_path(@service)
+'|
+=< link_to 'Back', services_path

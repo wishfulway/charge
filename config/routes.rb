@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  resources :wallets
+  resources :account_type_services
+  resources :services
+  resources :accounts
   root to: 'home#index'
 
   devise_for :users
