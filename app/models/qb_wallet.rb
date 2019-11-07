@@ -1,0 +1,3 @@
+class QbWallet < Wallet
+
+end

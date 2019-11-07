@@ -1,0 +1,3 @@
+class QcardWallet < Wallet
+
+end
