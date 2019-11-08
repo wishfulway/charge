@@ -1,0 +1,23 @@
+.form-group.row.my-3
+  = label_tag :name, "账户名称", class: "col-md-2 col-form-label"
+  .col-md-4
+    = text_field_tag :name, params[:name], class: 'form-control'
+  = label_tag :uin, "账户号码", class: "col-md-2 col-form-label"
+  .col-md-4
+    = text_field_tag :uin, params[:uin], class: 'form-control'
+.form-group.row
+  = label_tag :uin_type, "号码类型", class: "col-md-2 col-form-label"
+  .col-md-4
+    = select_tag :uin_type, options_for_select(uin_type_options, params[:uin_type]), {include_blank: "所有类型", class: 'form-control'}
+  = label_tag :pid, "账户类型", class: "col-md-2 col-form-label"
+  .col-md-4
+    = select_tag :type, options_for_select(account_type_options, params[:type]), {include_blank: "所有类型", class: 'form-control'}
+  /   = select_tag :pid, opts, {include_blank: "所有商品", class: 'form-control'}
+/ .form-group.row.my-3
+/   = label_tag :uin, "充值账号", class: "col-md-2 col-form-label"
+/   .col-md-4
+/     = text_field_tag :uin, params[:uin], class: 'form-control'
+/   = label_tag :state, "订单状态", class: "col-md-2 col-form-label"
+/   .col-md-4
+/     = select_tag :state, options_for_select(state_options, selected: params[:state]), {include_blank: "所有状态", class: 'form-control'}
+

@@ -1,31 +1,37 @@
-h1 Listing accounts
+h5
+  '账户列表
+  small.float-right
+    = link_to '添加账户', new_account_path
 
-table
-  thead
-    tr
-      th User
-      th Name
-      th Uin
-      th Uin type
-      th Type
-      th Status
-      th
-      th
-      th
+.card
+  = form_tag(accounts_path, method: :get) do
+    .card-body.pt-0.pb-0
+      = render partial: 'accounts/search', locals: { uin_type_options: Account.uin_types, account_type_options: AccountType.type_opts}
+    .p-2.text-right.border-top
+      => submit_tag("搜索", class: "btn btn-primary btn-sm")
+      | &nbsp;
+      =< link_to "清空搜索条件", accounts_path
 
-  tbody
-    - @accounts.each do |account|
+.table-responsive
+  table.table.table-bordered.table-striped.mb-1
+    thead
       tr
-        td = account.user
-        td = account.name
-        td = account.uin
-        td = account.uin_type
-        td = account.type
-        td = account.status
-        td = link_to 'Show', account
-        td = link_to 'Edit', edit_account_path(account)
-        td = link_to 'Destroy', account, data: { confirm: 'Are you sure?' }, method: :delete
+        th 账户名称
+        th 账户号码
+        th 号码类型
+        th 账户类型
+        th 账户状态
+        th 操作
+    tbody
+      - @accounts.each do |account|
+        tr
+          td = account.name
+          td = account.uin
+          td = account.uin_type
+          td = account.type_str
+          td = account.state_str
+          td
+            a.btn.btn-outline-success.btn-sm[href="#"]
+              | 修改钱包
 
-br
-
-= link_to 'New Account', new_account_path
+  br

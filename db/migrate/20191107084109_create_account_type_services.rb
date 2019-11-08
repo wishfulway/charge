@@ -11,6 +11,6 @@ class CreateAccountTypeServices < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :account_type_service_controls, [:account_type_id, :service_id], unique: true
+    add_index :account_type_services, [:account_type_id, :service_id], unique: true
   end
 end

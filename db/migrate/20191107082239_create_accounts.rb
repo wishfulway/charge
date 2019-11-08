@@ -8,7 +8,7 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
       t.string :uin_type #QQ WX
       t.string :type,   null: false #
       t.integer :state, null: false, default: 1, comment: "active or not"
-      t.integer :amount, null: true,  default: "支付总金额"
+      t.integer :amount, null: true,  default: 0, comment:"支付总金额"
 
       t.timestamps
     end

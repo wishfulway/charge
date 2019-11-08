@@ -7,10 +7,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :account
+  # BUG --- 加s
+  has_many :accounts
 
 
-  ADMIN_ID = 1
+  ADMIN_ID = 559
 
   def admin?
     return self.id == ADMIN_ID

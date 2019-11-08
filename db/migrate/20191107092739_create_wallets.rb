@@ -11,7 +11,7 @@ class CreateWallets < ActiveRecord::Migration[5.2]
       t.string :type         ,null: true, comment: "类型 BankWallet"
       t.string :state        ,null: false, default: 1, comment:"钱包状态 0 1 启用"
 
-      t.timestamps :circle_updated_at, null:true, comment:'周期更新时间'
+      t.datetime :circle_updated_at, null:true, comment:'周期更新时间'
       t.timestamps
     end
   end
