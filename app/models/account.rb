@@ -23,7 +23,7 @@ class Account < ApplicationRecord
   end
 
   def type_str
-    AccountType.type_name_str self.type
+    AccountType.type_name_cn self.type
   end
 
   def inquery_free_order

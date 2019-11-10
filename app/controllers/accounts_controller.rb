@@ -21,6 +21,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1/edit
   def edit
+
   end
 
   # POST /accounts

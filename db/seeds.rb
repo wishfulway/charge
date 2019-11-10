@@ -16,13 +16,13 @@ admin.save!
 wg = User.new(username: 'wangg', email: '363309946@qq.com',  password: '123456', nickname: '笨笨点卡')
 wg.save!
 
-qr_account_type = AccountType.new(name: 'QrAccount')
+qr_account_type = AccountType.new(name: 'QrAccount', cn_name:'扫码账户')
 qr_account_type.save!
-qcard_account_type = AccountType.new(name: 'QcardAccount')
+qcard_account_type = AccountType.new(name: 'QcardAccount', cn_name:'QQ卡账户')
 qcard_account_type.save!
-bank_account_type = AccountType.new(name: 'BankAccount')
+bank_account_type = AccountType.new(name: 'BankAccount', cn_name:'银行账户')
 bank_account_type.save
-qb_account_type = AccountType.new(name: 'QbAccount')
+qb_account_type = AccountType.new(name: 'QbAccount', cn_name:'Q币账户')
 qb_account_type.save
 
 if Rails.env.development?

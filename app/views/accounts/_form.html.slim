@@ -1,27 +1,35 @@
-= form_for @account do |f|
-  - if @account.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@account.errors.count, "error")} prohibited this account from being saved:"
-      ul
-        - @account.errors.full_messages.each do |message|
-          li = message
+.card
+  .card-body
+    - if @account.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@account.errors.count, "error")} 创建异常"
+        ul
+          - @account.errors.full_messages.each do |message|
+            li = message
 
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :uin
-    = f.text_field :uin
-  .field
-    = f.label :uin_type
-    = f.text_field :uin_type
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :state
-    = f.text_field :state
-  .actions = f.submit
+    = form_for @account do |f|
+      == render partial: 'accounts/form_base', locals: {f: f}
+      / .form-group.row
+      /   = f.label :name, "账户名称", class: "col-md-3 col-form-label"
+      /   .col-md-4
+      /     = f.text_field :name, class: 'form-control'
+      / .form-group.row
+      /   = f.label :type, "账户类型", class: "col-md-3 col-form-label"
+      /   .col-md-4
+      /     = f.select :type, AccountType.type_opts, {}, {class: 'form-control'}
+      / .form-group.row
+      /   = f.label :uin, "账户号码", class: "col-md-3 col-form-label"
+      /   .col-md-4
+      /     = f.text_field :uin, class: 'form-control'
+      / .form-group.row
+      /   = f.label :uin_type, "号码类型", class: "col-md-3 col-form-label"
+      /   .col-md-4
+      /     = f.select :type, Account.uin_types, {}, {class: 'form-control'}
+      /
+      / - if action_name=='new'
+      /   .p-2.border-top.text-center
+      /     = f.submit '创建', class: "btn btn-primary"
+      / - if action_name == 'edit'
+      /   .p-2.border-top.text-center
+      /     = f.submit '提交修改', class: "btn btn-primary"
+      /   / .actions = f.submit

@@ -1,8 +1,14 @@
-h1 Editing account
+h1 修改账户
 
-== render 'form'
+.card
+  .card-body
+    - if @account.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@account.errors.count, "error")} 创建异常"
+        ul
+          - @account.errors.full_messages.each do |message|
+            li = message
+    = form_for @account, url: update_account_path(@account.id) do |f|
+      == render partial: 'accounts/form_base', locals: {f: f}
 
-=> link_to 'Show', @account
-'|
-=< link_to 'Back', accounts_path
 

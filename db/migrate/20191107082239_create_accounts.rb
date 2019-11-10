@@ -3,7 +3,7 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
     create_table :accounts do |t|
       t.references :user, foreign_key: true
       t.references :account_type, foreign_key: true
-      t.string :name,   null: true,  default:"账户"
+      t.string :name,   null: false
       t.string :uin
       t.string :uin_type #QQ WX
       t.string :type,   null: false #
