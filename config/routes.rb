@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #
 
+  # resources :banks,  :as => :accounts, :controller => :accounts
+  # map.resources :qr,      :as => :accounts, :controller => :vehicles
+  # map.resources :motorcycles, :as => :accounts, :controller => :vehicles
+
 
   resources :accounts do
     get 'inquiry', on: :member

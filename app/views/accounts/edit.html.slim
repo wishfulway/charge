@@ -1,14 +1,15 @@
 h1 修改账户
 
-.card
-  .card-body
-    - if @account.errors.any?
-      #error_explanation
-        h2 = "#{pluralize(@account.errors.count, "error")} 创建异常"
-        ul
-          - @account.errors.full_messages.each do |message|
-            li = message
-    = form_for @account, url: update_account_path(@account.id) do |f|
-      == render partial: 'accounts/form_base', locals: {f: f}
+== render 'form'
+/ .card
+/   .card-body
+/     - if @account.errors.any?
+/       #error_explanation
+/         h2 = "#{pluralize(@account.errors.count, "error")} 创建异常"
+/         ul
+/           - @account.errors.full_messages.each do |message|
+/             li = message
+/     = form_for @account, url: update_account_path(@account.id) do |f|
+/       == render partial: 'accounts/form_base', locals: {f: f}
 
 

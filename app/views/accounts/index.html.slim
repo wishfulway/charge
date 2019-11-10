@@ -34,9 +34,9 @@ h5
             .raw
               =<> link_to "#", class: 'badge badge-primary' do
                 => fa_icon 'shopping-cart', text: "钱包管理"
-              =<> link_to edit_account_path(account.id) , class: 'badge badge-info' do
+              =<> link_to edit_account_path(account) , class: 'badge badge-info' do
                 => fa_icon 'shopping-cart', text: "账户修改"
-              =<> link_to "#", class: 'badge badge-danger', data: {confirm: '确定删除账户吗？'} do
+              =<> link_to account_path(account.id), class: 'badge badge-danger', data: {confirm: '确定删除账户吗？'} , method: :delete do
                 => fa_icon 'shopping-cart', text: "删除"
             / .row
             /   .col-md-4
