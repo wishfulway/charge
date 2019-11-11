@@ -1,0 +1,29 @@
+.table-responsive
+  table.table.table-bordered.table-striped.mb-1
+    thead
+      tr
+        th 渠道ID
+        th 卡号
+        th 密码
+        th 日限额
+        th 已支付金额
+        th 类型
+        th 状态
+        th 操作
+
+      tbody
+        - @wallets.each do |wallet|
+          tr
+            td = wallet.id
+            td = wallet.c_no
+            td = wallet.c_pw
+            td = wallet.p_limit_d_cents
+            td = wallet.amount_cents
+            td = wallet.type_str
+            td = wallet.state_str
+            td(id="wallet_actions_#{wallet.id}")
+              .raw
+                =<> link_to edit_wallet_path(wallet), class: 'badge badge-primary' do
+                  => fa_icon 'edit', text: "修改"
+                =<> link_to wallet_path(wallet), class: 'badge badge-danger', data: {confirm: '确定删除账户吗？'}, method: :delete
+                  => fa_icon 'shopping-cart', text: "删除"

@@ -4,9 +4,11 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :account_type, foreign_key: true
       t.string :name,   null: false
-      t.string :uin
-      t.string :uin_type #QQ WX
+      t.string :uin,   null: false
+      t.string :pw,   null: true, comment:"账户密码，可以为空"
+      # t.string :uin_type #QQ WX
       t.string :type,   null: false #
+
       t.integer :state, null: false, default: 1, comment: "active or not"
       t.integer :amount, null: true,  default: 0, comment:"支付总金额"
 

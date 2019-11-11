@@ -1,19 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  account: one
-  c_no: MyString
-  c_pw: MyString
-  pay_limit: MyString
-  amount: MyString
-  type: 
-  state: MyString
+#one:
+#  account: one
+#  c_no: MyString
+#  c_pw: MyString
+#  pay_limit: MyString
+#  amount: MyString
+#  type:
+#  state: MyString
 
-two:
-  account: two
-  c_no: MyString
-  c_pw: MyString
-  pay_limit: MyString
-  amount: MyString
-  type: 
-  state: MyString
+#two:
+#  account: two
+#  c_no: MyString
+#  c_pw: MyString
+#  pay_limit: MyString
+#  amount: MyString
+#  type:
+#  state: MyString

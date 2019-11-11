@@ -77,3 +77,6 @@ gem 'jquery-rails'
 #  运行 test 报错
 # C:/Ruby25-x64/lib/ruby/gems/2.5.0/gems/activesupport-5.2.3/lib/active_support/dependencies.rb:291:in `require': cannot load such file -- resque (LoadError)
 gem "resque"
+
+
+gem 'money-rails', '~>1.12'

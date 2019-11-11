@@ -1,30 +1,90 @@
-= form_for @wallet do |f|
-  - if @wallet.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@wallet.errors.count, "error")} prohibited this wallet from being saved:"
-      ul
-        - @wallet.errors.full_messages.each do |message|
-          li = message
+.card
+  .card-body
+    - if @wallet.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@wallet.errors.count, "error")} 创建异常"
+        ul
+          - @wallet.errors.full_messages.each do |message|
+            li = message
 
-  .field
-    = f.label :account
-    = f.text_field :account
-  .field
-    = f.label :c_no
-    = f.text_field :c_no
-  .field
-    = f.label :c_pw
-    = f.text_field :c_pw
-  .field
-    = f.label :pay_limit
-    = f.text_field :pay_limit
-  .field
-    = f.label :amount
-    = f.text_field :amount
-  .field
-    = f.label :type
-    = f.text_field :type
-  .field
-    = f.label :state
-    = f.text_field :state
-  .actions = f.submit
+    = form_for @wallet do |f|
+      .form-group.row
+        = f.label :c_no, "卡号", class: "col-md-3 col-form-label"
+        .col-md-4
+          = f.text_field :c_no, class: 'form-control'
+      .form-group.row
+        = f.label :c_pw, "密码", class: "col-md-3 col-form-label"
+        - if @wallet.c_pw.nil?
+          .col-md-4
+            = f.text_field :c_pw, class: 'form-control'
+        - else
+          .col-md-4
+            = f.text_field :c_pw, class: 'form-control', readonly:true
+      .form-group.row
+        = f.label :account_id, "账户ID", class: "col-md-3 col-form-label"
+        .col-md-4
+          = f.text_field :account_id, value: @wallet.account_id, class: 'form-control', readonly:true
+      .form-group.row
+        = f.label :type, "钱包类型", class: "col-md-3 col-form-label"
+        .col-md-4
+          = f.select :type, [[@wallet.type_str, @wallet.type]], {}, {class: 'form-control', readonly: true}
+          / = f.text_field :type, value: @wallet.type_str, class: 'form-control', readonly: true
+      - if @wallet.can_show_limit
+        .form-group.row
+          = f.label :p_limit_d_cents, "每日限额", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.text_field :p_limit_d_cents, value: @wallet.p_limit_d_cents, class: 'form-control'
+        / .form-group.row
+        /   = f.label :limit_circle, "限额周期（小时）", class: "col-md-3 col-form-label"
+        /   .col-md-4
+        /     = f.text_field :limit_circle, value: 24, class: 'form-control'
+        .form-group.row
+          = f.label :amount_cents, "已支付金额", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.text_field :amount_cents, value: 0, class: 'form-control'
+      - if action_name == 'edit'
+        .form-group.row
+          = f.label :state, "激活状态", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.select :state, Account.state_opts, {}, {class: 'form-control'}
+
+
+      - if action_name == 'new' || action_name == 'create_wallet'
+        .p-2.border-top.text-center
+          = f.submit '创建', class: "btn btn-primary"
+      - if action_name == 'edit'
+        .p-2.border-top.text-center
+          = f.submit '提交修改', class: "btn btn-primary"
+          / .actions = f.submit
+
+/
+/ = form_for @wallet do |f|
+/   - if @wallet.errors.any?
+/     #error_explanation
+/       h2 = "#{pluralize(@wallet.errors.count, "error")} prohibited this wallet from being saved:"
+/       ul
+/         - @wallet.errors.full_messages.each do |message|
+/           li = message
+/
+/   .field
+/     = f.label :account
+/     = f.text_field :account
+/   .field
+/     = f.label :c_no
+/     = f.text_field :c_no
+/   .field
+/     = f.label :c_pw
+/     = f.text_field :c_pw
+/   .field
+/     = f.label :pay_limit
+/     = f.text_field :pay_limit
+/   .field
+/     = f.label :amount
+/     = f.text_field :amount
+/   .field
+/     = f.label :type
+/     = f.text_field :type
+/   .field
+/     = f.label :state
+/     = f.text_field :state
+/   .actions = f.submit

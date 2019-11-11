@@ -12,13 +12,16 @@ Rails.application.routes.draw do
 
 
   resources :accounts do
-    get 'inquiry', on: :member
-    put 'change', on: :member
+    resources :wallets do
+      # get 'bid_account/:account_id', on: :collection, to: "wallets#show_wallets_bid_account"
+    end
+    # get 'with_wallets', on: :member, to: "accounts#show_wallets"
+    # get 'new_wallet', on: :member, to: "accounts#create_wallet"
   end
 
-  resources :wallets do
 
-  end
+  resources :wallets, only: [:edit, :destroy, :create]
+
   resources :account_type_services
   resources :services
 

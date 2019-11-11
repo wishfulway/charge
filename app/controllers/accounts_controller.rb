@@ -1,12 +1,12 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_account, only: [:show, :edit, :update, :destroy, :show_wallets, :create_wallet]
 
 
 
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = current_user.accounts
+    @accounts = current_user.accounts.order('id desc')
   end
 
   # GET /accounts/1
@@ -23,6 +23,19 @@ class AccountsController < ApplicationController
   def edit
 
   end
+
+
+
+
+  # def show_wallets
+  #   @wallets = @account.wallets
+  # end
+
+  # def create_wallet
+  #   @wallet = @account.wallets.new
+  #   @wallet.type = @account.get_wallet_type
+  #   @wallet.c_pw = !@account.pw.nil? ? @account.pw : nil
+  # end
 
   # POST /accounts
   # POST /accounts.json
@@ -72,6 +85,7 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name, :uin, :uin_type, :type, :status)
+      # state 必须为 string 形式的 定义了 enum
+      params.require(:account).permit(:name, :uin, :uin_type, :type, :state)
     end
 end

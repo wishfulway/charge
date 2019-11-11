@@ -15,7 +15,7 @@ class WalletsTest < ApplicationSystemTestCase
     click_on "New Wallet"
 
     fill_in "Account", with: @wallet.account_id
-    fill_in "Amount", with: @wallet.amount
+    fill_in "Amount", with: @wallet.amount_cents
     fill_in "C no", with: @wallet.c_no
     fill_in "C pw", with: @wallet.c_pw
     fill_in "Pay limit", with: @wallet.pay_limit
@@ -32,7 +32,7 @@ class WalletsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Account", with: @wallet.account_id
-    fill_in "Amount", with: @wallet.amount
+    fill_in "Amount", with: @wallet.amount_cents
     fill_in "C no", with: @wallet.c_no
     fill_in "C pw", with: @wallet.c_pw
     fill_in "Pay limit", with: @wallet.pay_limit

@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
     t.bigint "user_id"
     t.bigint "account_type_id"
     t.string "name", null: false
-    t.string "uin"
-    t.string "uin_type"
+    t.string "uin", null: false
+    t.string "pw", comment: "账户密码，可以为空"
     t.string "type", null: false
     t.integer "state", default: 1, null: false, comment: "active or not"
     t.integer "amount", default: 0, comment: "支付总金额"
@@ -83,11 +83,10 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
     t.bigint "account_id"
     t.string "c_no", comment: "卡号"
     t.string "c_pw", comment: "密码"
-    t.string "pay_limit", comment: "支付限制"
-    t.string "limit_circle", comment: "限制周期"
-    t.string "amount", comment: "周期内支付的数量"
+    t.bigint "p_limit_d_cents", default: 300000, comment: "支付限制 每日限额"
+    t.bigint "amount_cents", default: 0, comment: "周期内支付的数量"
     t.string "type", comment: "类型 BankWallet"
-    t.string "state", default: "1", null: false, comment: "钱包状态 0 1 启用"
+    t.integer "state", default: 1, null: false, comment: "钱包状态 0 1 启用"
     t.datetime "circle_updated_at", comment: "周期更新时间"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

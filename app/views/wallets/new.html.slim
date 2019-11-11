@@ -1,5 +1,17 @@
-h1 New wallet
+h5
+  - if !@account.nil? || @account
+    ' 向账户钱包添加支付渠道
+    small
+      ' --- 当前账户id：
+    small.bg-info
+      ' #{@account.id}
+    small
+      '--- 账户号码：
+    small.bg-info
+      '#{@account.uin}
+
 
 == render 'form'
 
-= link_to 'Back', wallets_path
+
+= link_to '返回钱包管理', account_wallets_path

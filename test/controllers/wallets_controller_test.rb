@@ -17,7 +17,7 @@ class WalletsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create wallet" do
     assert_difference('Wallet.count') do
-      post wallets_url, params: { wallet: { account_id: @wallet.account_id, amount: @wallet.amount, c_no: @wallet.c_no, c_pw: @wallet.c_pw, pay_limit: @wallet.pay_limit, state: @wallet.state, type: @wallet.type } }
+      post wallets_url, params: { wallet: {account_id: @wallet.account_id, amount_cents: @wallet.amount_cents, c_no: @wallet.c_no, c_pw: @wallet.c_pw, p_limit_d_cents: @wallet.p_limit_d_cents, state: @wallet.state, type: @wallet.type } }
     end
 
     assert_redirected_to wallet_url(Wallet.last)
@@ -34,7 +34,7 @@ class WalletsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update wallet" do
-    patch wallet_url(@wallet), params: { wallet: { account_id: @wallet.account_id, amount: @wallet.amount, c_no: @wallet.c_no, c_pw: @wallet.c_pw, pay_limit: @wallet.pay_limit, state: @wallet.state, type: @wallet.type } }
+    patch wallet_url(@wallet), params: { wallet: {account_id: @wallet.account_id, amount_cents: @wallet.amount_cents, c_no: @wallet.c_no, c_pw: @wallet.c_pw, p_limit_d_cents: @wallet.p_limit_d_cents, state: @wallet.state, type: @wallet.type } }
     assert_redirected_to wallet_url(@wallet)
   end
 

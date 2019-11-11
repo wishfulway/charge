@@ -6,7 +6,7 @@ h5
 .card
   = form_tag(accounts_path, method: :get) do
     .card-body.pt-0.pb-0
-      = render partial: 'accounts/search', locals: { uin_type_options: Account.uin_types, account_type_options: AccountType.type_opts}
+      = render partial: 'accounts/search', locals: {account_type_options: AccountType.type_opts}
     .p-2.text-right.border-top
       => submit_tag("搜索", class: "btn btn-primary btn-sm")
       | &nbsp;
@@ -16,23 +16,23 @@ h5
   table.table.table-bordered.table-striped.mb-1
     thead
       tr
+        th 账户ID
         th 账户名称
         th 账户号码
-        th 号码类型
         th 账户类型
         th 账户状态
         th 操作
     tbody
       - @accounts.each do |account|
         tr
+          td = account.id
           td = account.name
           td = account.uin
-          td = account.uin_type
           td = account.type_str
           td = account.state_str
           td(id="account_actions_#{account.id}")
             .raw
-              =<> link_to "#", class: 'badge badge-primary' do
+              =<> link_to account_wallets_path(account), class: 'badge badge-primary' do
                 => fa_icon 'shopping-cart', text: "钱包管理"
               =<> link_to edit_account_path(account) , class: 'badge badge-info' do
                 => fa_icon 'shopping-cart', text: "账户修改"

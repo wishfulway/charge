@@ -21,9 +21,19 @@
         .col-md-4
           = f.text_field :uin, class: 'form-control'
       .form-group.row
-        = f.label :uin_type, "号码类型", class: "col-md-3 col-form-label"
+        = f.label :pw, "支付密码", class: "col-md-3 col-form-label"
         .col-md-4
-          = f.select :uin_type, Account.uin_types, {}, {class: 'form-control'}
+          = f.text_field :pw, class: 'form-control'
+      / .form-group.row
+      /   = f.label :uin_type, "号码类型", class: "col-md-3 col-form-label"
+      /   .col-md-4
+      /     = f.select :uin_type, Account.uin_types, {}, {class: 'form-control'}
+      - if action_name == 'edit'
+        .form-group.row
+          = f.label :state, "激活状态", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.select :state, Account.state_opts, {}, {class: 'form-control'}
+
 
       - if action_name=='new'
         .p-2.border-top.text-center
@@ -32,3 +42,4 @@
         .p-2.border-top.text-center
           = f.submit '提交修改', class: "btn btn-primary"
         / .actions = f.submit
+
