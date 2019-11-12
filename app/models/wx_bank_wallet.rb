@@ -1,3 +1,3 @@
-class WxBankWallet < Wallet
+class WxBankWallet < WalletBank
 
 end

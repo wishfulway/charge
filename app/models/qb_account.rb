@@ -1,3 +1,0 @@
-class QbAccount < Account
-
-end

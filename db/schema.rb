@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_type_id"], name: "index_accounts_on_account_type_id"
-    t.index ["user_id", "uin"], name: "index_accounts_on_user_id_and_uin", unique: true
+    t.index ["user_id", "uin", "type"], name: "index_accounts_on_user_id_and_uin_and_type", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_wallets_on_account_id"
+    t.index ["c_no", "type"], name: "index_wallets_on_c_no_and_type", unique: true
   end
 
   add_foreign_key "account_type_services", "account_types"

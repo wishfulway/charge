@@ -6,11 +6,11 @@ MoneyRails.configure do |config|
 
   config.register_currency = {
       priority:            1,
-      iso_code:            :cn4,
-      name:                "CNY with subunit of 4 digits",
+      iso_code:            :cn2,
+      name:                "CNY with subunit of 2 digits",
       symbol:              "¥",
       symbol_first:        true,
-      subunit:             "Subcent",
+      subunit:             "Cent",
       subunit_to_unit:     10000,
       thousands_separator: ",",
       decimal_mark:        "."
@@ -18,7 +18,7 @@ MoneyRails.configure do |config|
 
   # To set the default currency
   #
-  config.default_currency = :cn4
+  config.default_currency = :cn2
 
   # Set default bank object
   #

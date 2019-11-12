@@ -1,3 +1,0 @@
-class QrWallet < Wallet
-
-end

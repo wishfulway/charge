@@ -16,12 +16,12 @@ class WalletsController < ApplicationController
   # GET /wallets/new
   def new
     @account = Account.find(params[:account_id])
-    @wallet = @account.wallets.new
-    @wallet.type = @account.get_wallet_type
+    @wallet = @account.new_wallet
   end
 
   # GET /wallets/1/edit
   def edit
+    @account = Account.find(params[:account_id])
   end
 
 
@@ -30,10 +30,11 @@ class WalletsController < ApplicationController
   # POST /wallets
   # POST /wallets.json
   def create
-    @wallet = Wallet.new(wallet_params)
+    account = Account.find(params[:account_id])
+    @wallet = account.wallets.new(wallet_params)
     respond_to do |format|
       if @wallet.save
-        format.html { redirect_to @wallet.becomes(Wallet), notice: 'Wallet was successfully created.' }
+        format.html { redirect_to account_wallets_path(account), notice: '支付渠道创建成功' }
         format.json { render :show, status: :created, location: @wallet }
       else
         format.html { render :new }
@@ -45,9 +46,10 @@ class WalletsController < ApplicationController
   # PATCH/PUT /wallets/1
   # PATCH/PUT /wallets/1.json
   def update
+    account = Account.find(@wallet.account_id)
     respond_to do |format|
       if @wallet.update(wallet_params)
-        format.html { redirect_to @wallet, notice: 'Wallet was successfully updated.' }
+        format.html { redirect_to account_wallets_path(account), notice: '支付渠道成功修改' }
         format.json { render :show, status: :ok, location: @wallet }
       else
         format.html { render :edit }
@@ -62,7 +64,7 @@ class WalletsController < ApplicationController
     account = Account.find(@wallet.account_id)
     @wallet.destroy
     respond_to do |format|
-      format.html { redirect_to account_wallets_path(account), notice: '成功删除支付渠道' }
+      format.html { redirect_to account_wallets_path(account), notice: '支付渠道成功删除' }
       format.json { head :no_content }
     end
   end
@@ -70,7 +72,6 @@ class WalletsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wallet
-      puts "params -- ", params
       @wallet = Wallet.find(params[:id])
     end
 

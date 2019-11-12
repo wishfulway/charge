@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
 
-  resources :wallets, only: [:edit, :destroy, :create]
+  resources :wallets, only: [:destroy, :create, :update]
 
   resources :account_type_services
   resources :services

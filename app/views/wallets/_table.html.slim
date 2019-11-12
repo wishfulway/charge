@@ -23,7 +23,7 @@
             td = wallet.state_str
             td(id="wallet_actions_#{wallet.id}")
               .raw
-                =<> link_to edit_wallet_path(wallet), class: 'badge badge-primary' do
+                =<> link_to edit_account_wallet_path(@account, wallet), class: 'badge badge-primary' do
                   => fa_icon 'edit', text: "修改"
                 =<> link_to wallet_path(wallet), class: 'badge badge-danger', data: {confirm: '确定删除账户吗？'}, method: :delete
                   => fa_icon 'shopping-cart', text: "删除"

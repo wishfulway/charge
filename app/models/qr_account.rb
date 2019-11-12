@@ -1,3 +1,0 @@
-class QrAccount < Account
-
-end

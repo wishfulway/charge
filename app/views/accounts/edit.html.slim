@@ -1,9 +1,11 @@
 h5
   '修改账户
-  small.float-right
-    = link_to '返回账户列表', accounts_path
+
 
 == render 'form'
+
+/ small.float-right
+= link_to '返回账户列表', accounts_path
 / .card
 /   .card-body
 /     - if @account.errors.any?

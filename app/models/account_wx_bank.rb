@@ -1,0 +1,4 @@
+class AccountWxBank < AccountBank
+
+
+end

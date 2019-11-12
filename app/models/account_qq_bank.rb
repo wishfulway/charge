@@ -1,0 +1,4 @@
+class AccountQqBank < AccountBank
+
+
+end

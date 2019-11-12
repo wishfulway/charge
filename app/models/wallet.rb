@@ -1,16 +1,17 @@
 class Wallet < ApplicationRecord
   belongs_to :account
 
-
-  enum type: {QqBankWallet:'QqBankWallet', WxBankWallet:'WxBankWallet', QbWallet:'QbWallet', QcardWallet:'QcardWallet', QrWallet:'QrWallet'}, _prefix:true
-
+  validates :c_no, uniqueness: { scope: :type,
+                                message: "同类型钱包，卡号不能重复" }
   enum state: {inactive:0, active:1}, _prefix: true
 
   BANK_WALLET_LIMIT = 300000
 
-  register_currency :cn4
-  monetize :p_limit_d_cents, with_currency: :cn4, allow_nil: true
-  monetize :amount_cents   , with_currency: :cn4, allow_nil: true
+  register_currency :cn2
+  monetize :p_limit_d_cents, with_currency: :cn2, allow_nil: true
+  monetize :amount_cents, with_currency: :cn2, allow_nil: true
+
+  # qb 账户
 
 
   def self.state_str(state)
@@ -34,42 +35,43 @@ class Wallet < ApplicationRecord
 
   def self.type_str(type)
     case type
-    when 'QqBankWallet'
+    when 'WalletQqBank'
       return 'QQ账户钱包'
-    when 'WxBankWallet'
+    when 'WalletWxBank'
       return '微信账户钱包'
-    when 'QbWallet'
+    when 'WalletQb'
       return 'Q币账户钱包'
-    when 'QcardWallet'
+    when 'WalletQcard'
       return 'QQ卡账户钱包'
     end
   end
 
   def type_str
     case self.type
-    when 'QqBankWallet'
-      return 'QQ账户钱包'
-    when 'WxBankWallet'
-      return '微信账户钱包'
-    when 'QbWallet'
-      return 'Q币账户钱包'
-    when 'QcardWallet'
-      return 'QQ卡账户钱包'
-    when 'QrWallet'
-      return '扫码账户钱包'
+    when 'WalletQqBank'
+      return 'QQ账户钱包支付'
+    when 'WalletWxBank'
+      return '微信账户钱包支付'
+    when 'WalletQb'
+      return 'Q币账户钱包支付'
+    when 'WalletQcard'
+      return 'QQ卡账户钱包支付'
+    when 'WalletQr'
+      return '扫码账户钱包支付'
     end
   end
 
   def can_show_limit
     case self.type
-    when 'QqBankWallet'
+    when 'WalletQqBank'
       return true
-    when 'WxBankWallet'
+    when 'WalletWxBank'
       return true
     end
     return false
 
   end
+
 
 
 

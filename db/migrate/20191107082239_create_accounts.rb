@@ -14,6 +14,6 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :accounts, [:user_id, :uin], unique: true
+    add_index :accounts, [:user_id, :uin, :type], unique: true
   end
 end

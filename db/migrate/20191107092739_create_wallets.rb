@@ -14,5 +14,6 @@ class CreateWallets < ActiveRecord::Migration[5.2]
       t.datetime :circle_updated_at, null:true, comment:'周期更新时间'
       t.timestamps
     end
+    add_index :wallets, [:c_no, :type], unique: true
   end
 end

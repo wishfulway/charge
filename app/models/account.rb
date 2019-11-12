@@ -2,6 +2,9 @@ class Account < ApplicationRecord
   belongs_to :user
   belongs_to :account_type
   # validates :user_id, presence: true
+  validates :name, presence: true
+  validates :uin, presence: true, uniqueness: { scope: :type,
+                                 message: "同类型账户下，账户号码不能重复" }
 
   has_many :wallets
 
@@ -32,18 +35,22 @@ class Account < ApplicationRecord
     AccountType.type_name_cn self.type
   end
 
-  def get_wallet_type
-    case self.type
-    when 'QrAccount'
-      return Wallet.types[:QrWallet]
-    when 'QqBankAccount'
-      return Wallet.types[:QqBankWallet]
-    when 'WxBankAccount'
-      return Wallet.types[:WxBankWallet]
-    when 'QcardAccount'
-      return Wallet.types[:QcardWallet]
-    end
+  def new_wallet
+    type = case self.type
+           when 'AccountQr'
+             'WalletQr'
+           when 'AccountQqBank'
+             "WalletQqBank"
+           when 'AccountWxBank'
+             "WalletWxBank"
+           when 'AccountQcard'
+             "WalletQcard"
+           end
+
+    c_pw = !self.pw.nil? ? self.pw : nil
+    self.wallets.new(type: type, c_pw: c_pw)
   end
+
 
 
   def inquery_free_order

@@ -1,3 +1,0 @@
-class QcardAccount < Account
-
-end

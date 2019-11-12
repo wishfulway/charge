@@ -1,3 +1,0 @@
-class BankWallet < Wallet
-
-end

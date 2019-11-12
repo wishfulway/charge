@@ -1,4 +1,4 @@
-class WxBankAccount < Account
+class AccountQr < Account
 
   def self.model_name
     Account.model_name
