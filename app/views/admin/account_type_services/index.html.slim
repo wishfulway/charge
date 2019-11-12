@@ -1,0 +1,39 @@
+h5
+  '账户业务绑定列表
+  small.float-right
+    = link_to '添加绑定', new_admin_account_type_service_path
+
+.table-responsive
+  table.table.table-bordered.table-striped.mb-1
+    thead
+      tr
+        th ID
+        th 账户类型
+        th
+          '业务
+          small.text-muted
+            = '设备识别名'
+        th 状态
+        th 查询间隔
+        th 操作
+    tbody
+      - @account_type_services.each do |account_type_service|
+        tr
+          td = account_type_service.id
+          td = account_type_service.account_type_cn
+          td
+            => account_type_service.service_cn
+            small.text-muted
+              = account_type_service.service_de_name
+          td = AccountTypeService.state_cn account_type_service.state
+          td = account_type_service.interval
+          td(id="admin_account_type_service_actions_#{account_type_service.id}")
+            .raw
+              =<> link_to edit_admin_account_type_service_path(account_type_service) , class: 'badge badge-info' do
+                => fa_icon 'edit', text: "修改"
+              =<> link_to admin_account_type_service_path(account_type_service), class: 'badge badge-danger', data: {confirm: '确定删除绑定吗？'} , method: :delete do
+                => fa_icon 'shopping-cart', text: "删除"
+
+br
+
+== pagy_bootstrap_nav(@pagy).gsub(" pagination", " pagination pagination-sm")

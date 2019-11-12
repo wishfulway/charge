@@ -1,0 +1,15 @@
+h5 Listing users
+
+table
+  thead
+    tr
+      th Name
+
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.username
+
+
+br
+

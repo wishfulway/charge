@@ -23,9 +23,21 @@ Rails.application.routes.draw do
   resources :wallets, only: [:destroy, :create, :update]
 
   resources :account_type_services
-  resources :services
+  resources :services do
 
+  end
 
+  namespace :admin do
+
+    resources :users, only: [:index] do
+
+    end
+
+    resources :services
+
+    resources :account_type_services
+
+  end
 
 
 

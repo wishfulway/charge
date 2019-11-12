@@ -18,7 +18,23 @@ html
         #navbarSupportedContent.collapse.navbar-collapse
           ul.navbar-nav
             - if current_user.admin?
-
+              li.nav-item.dropdown
+                a#navbarAdminDropdown1.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 用户管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "用户列表", admin_users_path, {class: 'dropdown-item'}
+                  .dropdown-divider
+                  = link_to "用户规则", "#", {class: 'dropdown-item'}
+              li.nav-item.dropdown
+                a#navbarAdminDropdown2.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 业务管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "业务列表", admin_services_path, {class: 'dropdown-item'}
+              li.nav-item.dropdown
+                a#navbarAdminDropdown3.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+                  | 账户管理
+                .dropdown-menu aria-labelledby="navbarDropdown"
+                  = link_to "账户业务", admin_account_type_services_path, {class: 'dropdown-item'}
             - else
               li.nav-item.dropdown
                 a#navbarDropdown0.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"

@@ -1,0 +1,38 @@
+h5
+  '业务列表
+  small.float-right
+    = link_to '添加业务', new_admin_service_path
+
+.table-responsive
+  table.table.table-bordered.table-striped.mb-1
+    thead
+      tr
+        th 业务ID
+        th 业务名
+        th 业务比例
+        th 设备识别名
+        th 链接
+        th 操作
+
+    tbody
+      - @services.each do |service|
+        tr
+          td = service.id
+          td = service.name
+          td = service.rate
+          td = service.de_name
+          td = service.url
+          td(id="admin_service_actions_#{service.id}")
+            .raw
+              =<> link_to edit_admin_service_path(service) , class: 'badge badge-info' do
+                => fa_icon 'edit', text: "修改"
+              =<> link_to admin_service_path(service), class: 'badge badge-danger', data: {confirm: '确定删除账户吗？'} , method: :delete do
+                => fa_icon 'shopping-cart', text: "删除"
+
+
+br
+
+
+== pagy_bootstrap_nav(@pagy).gsub(" pagination", " pagination pagination-sm")
+
+/ = link_to 'New Service', new_service_path

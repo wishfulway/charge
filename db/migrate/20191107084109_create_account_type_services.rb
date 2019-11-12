@@ -4,7 +4,7 @@ class CreateAccountTypeServices < ActiveRecord::Migration[5.2]
       t.references :account_type, foreign_key: true
       t.references :service, foreign_key: true
 
-      t.integer :state, default: 0, comment: 'on, off'
+      t.integer :state, default: 1, comment: 'on 1, off 0'
       t.integer :interval, default: 0, comment: '可查询间隔 单位为s，0 为无查询间隔'
 
 

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
   create_table "account_type_services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "account_type_id"
     t.bigint "service_id"
-    t.integer "state", default: 0, comment: "on, off"
+    t.integer "state", default: 1, comment: "on 1, off 0"
     t.integer "interval", default: 0, comment: "可查询间隔 单位为s，0 为无查询间隔"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,12 +48,13 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
   end
 
   create_table "services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: "充值类目名称", null: false, comment: "Q币充值"
+    t.string "name", null: false, comment: "Q币充值"
     t.integer "rate", null: false, comment: "比例"
     t.string "de_name", null: false, comment: "设备端名称"
     t.string "url", comment: "充值url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["de_name"], name: "index_services_on_de_name", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

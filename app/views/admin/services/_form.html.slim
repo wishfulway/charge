@@ -1,0 +1,34 @@
+.card
+  .card-body
+
+      - if @service.errors.any?
+        #error_explanation
+          h2 = "#{pluralize(@service.errors.count, "error")} prohibited this service from being saved:"
+          ul
+            - @service.errors.full_messages.each do |message|
+              li = message
+
+      / = form_for @service, url: admin_services_path do |f|
+      = form_for [:admin, @service] do |f|
+        .form-group.row
+          = f.label :name, "业务名称", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.text_field :name, class: 'form-control'
+        .form-group.row
+          = f.label :rate, "充值比例", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.text_field :rate, class: 'form-control'
+        .form-group.row
+          = f.label :de_name, "设备识别名", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.text_field :de_name, class: 'form-control'
+        .form-group.row
+          = f.label :url, "链接", class: "col-md-3 col-form-label"
+          .col-md-4
+            = f.text_field :url, class: 'form-control'
+        - if action_name == 'new'
+          .p-2.border-top.text-center
+            = f.submit '创建', class: "btn btn-primary"
+        - if action_name == 'edit'
+          .p-2.border-top.text-center
+            = f.submit '提交修改', class: "btn btn-primary"

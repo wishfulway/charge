@@ -1,0 +1,32 @@
+.card
+  .card-body
+    - if @account_type_service.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@account_type_service.errors.count, "error")} prohibited this account_type_service from being saved:"
+        ul
+          - @account_type_service.errors.full_messages.each do |message|
+            li = message
+
+    = form_for [:admin, @account_type_service] do |f|
+      .form-group.row
+        = f.label :account_type_id, "账户类型", class: "col-md-3 col-form-label"
+        .col-md-4
+          - opts = AccountType.all.map {|a| [a.cn_name, a.id]}
+          = f.select :account_type_id, opts, {include_blank: "---选择账户类型---"}, {class: 'form-control'}
+      .form-group.row
+        = f.label :service_id, "业务名称", class: "col-md-3 col-form-label"
+        .col-md-4
+          - opts = Service.all.map {|s| ["#{s.name} -- #{s.de_name} ", s.id]}
+          = f.select :service_id, opts, {include_blank: "---选择业务名称---"}, {class: 'form-control'}
+      .form-group.row
+        = f.label :state, "接单控制", class: "col-md-3 col-form-label"
+        .col-md-4
+          = f.select :state, AccountTypeService.state_opts, {include_blank: "---选择---"}, {class: 'form-control'}
+      .form-group.row
+        = f.label :interval, "查询间隔", class: "col-md-3 col-form-label"
+        .col-md-4
+          = f.text_field :interval, class: 'form-control'
+      .p-2.border-top.text-center
+        = f.submit '创建', class: "btn btn-primary"
+
+
