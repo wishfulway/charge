@@ -1,15 +1,50 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  rate: 1
-  de_name: MyString
-  de_type: MyString
-  url: MyString
+# wx_bank_account -- service
+wx_bank_xwsd_service:
+  name: "炫舞时代金币"
+  de_name: "XWSD"
+  rate: "100"
 
-two:
-  name: MyString
-  rate: 1
-  de_name: MyString
-  de_type: MyString
-  url: MyString
+wx_bank_cf_service:
+  name: "穿越火线"
+  de_name: "CYHX"
+  rate: "100"
+
+wx_bank_hzdnf_service:
+  name: "黑钻"
+  de_name: "HZDNF"
+  rate: "1"
+
+# qq_bank_account -- service
+qq_bank_dnf_service:
+  name: "地下城与勇士"
+  de_name: "DNF"
+  rate: "100"
+
+# qb_account -- service
+qb_wyhy_service:
+  name: "微云会员"
+  de_name: "WYHY"
+  rate: "1"
+  url: "https://pay.qq.com/ipay/index.shtml?c=wyclub"
+
+# qr_account -- service
+
+qr_cmdnf_service:
+  name: "DNF网页验号"
+  de_name: "CMDNF"
+  rate: "100"
+  url: "https://pay.qq.com/ipay/index.shtml?c=dnfdq"
+
+qr_wydnf_service:
+  name: "DNF网页扫码"
+  de_name: "WYDNF"
+  rate: "100"
+  url: "https://pay.qq.com/ipay/index.shtml?c=dnfdq"
+
+qr_smdnf_service:
+  name: "DNF扫码支付"
+  de_name: "SMDNF"
+  rate: "100"
+

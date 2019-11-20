@@ -1,19 +1,40 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-#  account: one
-#  c_no: MyString
-#  c_pw: MyString
-#  pay_limit: MyString
-#  amount: MyString
-#  type:
-#  state: MyString
+worker1_wallet_qq_Bank_1:
+  account: worker1_account_qq_Bank
+  c_no: '浙江农信-储蓄卡(qq00)'
+  c_pw: "456789"
+  type: "WalletQqBank"
+  state: 1
 
-#two:
-#  account: two
-#  c_no: MyString
-#  c_pw: MyString
-#  pay_limit: MyString
-#  amount: MyString
-#  type:
-#  state: MyString
+worker1_wallet_qq_Bank_2:
+  account: worker1_account_qq_Bank
+  c_no: '浙江农信-储蓄卡(qq01)'
+  c_pw: "456222"
+  priority: 90
+  type: "WalletQqBank"
+  state: 1
+
+
+worker1_wallet_wx_Bank:
+  account: worker1_account_wx_Bank
+  c_no: '浙江农信-储蓄卡(wx11)'
+  c_pw: "332211"
+  type: "WalletWxBank"
+  state: 1
+
+worker1_wallet_qb_1200:
+  account: worker1_account_wx_Bank
+  c_no: '373525731'
+  amount_qb: 1200
+  remained_qb: 1200
+  type: "WalletQb"
+  state: 1
+
+worker1_wallet_qr:
+  account: worker1_account_wx_Bank
+  c_no: '财付通'
+  c_pw: "332211"
+  p_limit_d_cents: 5 * 10000 * 100
+  type: "WalletQr"
+  state: 1

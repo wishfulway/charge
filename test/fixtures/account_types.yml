@@ -1,7 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  type: 
+account_qr:
+  name: "AccountQr"
+  cn_name: "扫码账户"
 
-two:
-  type: 
+account_qcard:
+  name: "AccountQcard"
+  cn_name: "q卡账户"
+
+account_qq_bank:
+  name: "AccountQqBank"
+  cn_name: "qq银行卡账户"
+
+account_wx_bank:
+  name: "AccountWxBank"
+  cn_name: "微信银行卡账户"
+
+account_qb:
+  name: "AccountQb"
+  cn_name: "Q币账户"
+

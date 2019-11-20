@@ -4,4 +4,6 @@ class AccountQcard < Account
     Account.model_name
   end
 
+
+
 end

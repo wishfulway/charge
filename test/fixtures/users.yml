@@ -3,13 +3,14 @@
 # This model initially had no columns defined. If you add columns to the
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
-#
-#one: {}
-# column: value
-#
-#two: {}
-# column: value
 
-t_user:
-  username: t_user name
-  email: t_user@example.com
+admin:
+  id: 588
+  username: admin
+  nickname: admin
+  email: admin@a.com
+
+worker1:
+  username: worker1
+  nickname: worker1
+  email: worker1@a.com

@@ -1,13 +1,50 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  account_type: one
-  service: one
+wx_bank_account_service_xwsd:
+  account_type: account_wx_bank
+  service: wx_bank_xwsd_service
   state: 1
-  interval: 1
+  interval: 60
 
-two:
-  account_type: two
-  service: two
+wx_bank_account_service_cf:
+  account_type: account_wx_bank
+  service: wx_bank_cf_service
   state: 1
-  interval: 1
+  interval: 60
+
+wx_bank_account_service_hzdnf:
+  account_type: account_wx_bank
+  service: wx_bank_hzdnf_service
+  state: 1
+  interval: 60
+
+qq_bank_account_service_dnf:
+  account_type: account_qq_bank
+  service: qq_bank_dnf_service
+  state: 1
+  interval: 60
+
+qb_account_service_wyhy:
+  account_type: account_qb
+  service: qb_wyhy_service
+  state: 1
+  interval: 60
+
+qr_account_service_cmdnf:
+  account_type: account_qr
+  service: qr_cmdnf_service
+  state: 1
+  interval: 60
+
+
+qr_account_service_wydnf:
+  account_type: account_qr
+  service: qr_wydnf_service
+  state: 1
+  interval: 60
+
+qr_account_service_smdnf:
+  account_type: account_qr
+  service: qr_smdnf_service
+  state: 1
+  interval: 60

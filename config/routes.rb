@@ -12,10 +12,12 @@ Rails.application.routes.draw do
 
 
   resources :accounts do
+
+
     resources :wallets do
       # get 'bid_account/:account_id', on: :collection, to: "wallets#show_wallets_bid_account"
     end
-    # get 'with_wallets', on: :member, to: "accounts#show_wallets"
+    get 'inquiry_order',  to: "accounts#inquiry_order"
     # get 'new_wallet', on: :member, to: "accounts#create_wallet"
   end
 

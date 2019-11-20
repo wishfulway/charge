@@ -1,3 +1,0 @@
-class WxBankWallet < WalletBank
-
-end

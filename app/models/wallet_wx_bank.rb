@@ -1,0 +1,4 @@
+class WalletWxBank < WalletBank
+
+
+end

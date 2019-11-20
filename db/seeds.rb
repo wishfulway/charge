@@ -87,6 +87,7 @@ if Rails.env.development?
   wg_qq_bank_account.save!
   wg_qq_bank_account_wallet =  wg_qq_bank_account.wallets.new(c_no:"浙江农信-储蓄卡(0000)", type: 'WalletQqBank')
   wg_qq_bank_account_wallet.c_pw = wg_qq_bank_account.pw.nil? ? wg_qq_bank_account.pw : '456789'
+  wg_qq_bank_account_wallet.amount_updated_at = Time.now
   wg_qq_bank_account_wallet.save
 
 

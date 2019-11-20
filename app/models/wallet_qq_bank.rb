@@ -1,6 +1,4 @@
 class WalletQqBank < WalletBank
 
 
-
-
 end

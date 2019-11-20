@@ -1,17 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-#one:
-#  user: one
-#  name: MyString
-#  uin: MyString
-#  uin_type: MyString
-#  type:
-#  status: MyString
+worker1_account_qq_Bank:
+  user: worker1
+  account_type: account_qq_bank
+  name: 'worker1_qq银行卡_账户'
+  uin: "112233"
+  type: "AccountQqBank"
+  state: 1
 
-#two:
-#  user: two
-#  name: MyString
-#  uin: MyString
-#  uin_type: MyString
-#  type:
-#  status: MyString
+worker1_account_wx_Bank:
+  user: worker1
+  account_type: account_wx_bank
+  name: 'worker1_微信银行卡_账户'
+  uin: "332211"
+  type: "AccountWxBank"
+  state: 1
+
+worker1_account_qb:
+  user: worker1
+  account_type: account_qb
+  name: 'worker1_Q币_账户'
+  uin: "221133"
+  type: "AccountQb"
+  state: "active"
+
+worker1_account_qr:
+  user: worker1
+  account_type: account_qr
+  name: 'worker1_扫码_账户'
+  uin: "113322"
+  type: "AccountQr"
+  state: "active"

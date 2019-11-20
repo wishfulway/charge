@@ -1,5 +1,6 @@
 class AccountType < ApplicationRecord
   has_many :account
+  has_many :account_type_services
 
   # TYPE_NAME = {QrAccount:'QrAccount', QcardAccount:'QcardAccount', BankAccount:'BankAccount', QbAccount:'QbAccount'}
 

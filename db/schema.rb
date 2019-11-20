@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
     t.integer "rate", null: false, comment: "比例"
     t.string "de_name", null: false, comment: "设备端名称"
     t.string "url", comment: "充值url"
+    t.integer "priority", default: 100, null: false, comment: "优先级"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["de_name"], name: "index_services_on_de_name", unique: true
@@ -81,18 +82,21 @@ ActiveRecord::Schema.define(version: 2019_11_07_092739) do
   end
 
   create_table "wallets", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "account_id"
-    t.string "c_no", comment: "卡号"
+    t.bigint "account_id", null: false
+    t.string "c_no", null: false, comment: "卡号"
     t.string "c_pw", comment: "密码"
     t.bigint "p_limit_d_cents", default: 300000, comment: "支付限制 每日限额"
-    t.bigint "amount_cents", default: 0, comment: "周期内支付的数量"
-    t.string "type", comment: "类型 BankWallet"
-    t.integer "state", default: 1, null: false, comment: "钱包状态 0 1 启用"
-    t.datetime "circle_updated_at", comment: "周期更新时间"
+    t.bigint "amount_cents", default: 0, comment: "周期内已支付的数额"
+    t.string "type", null: false, comment: "类型 BankWallet"
+    t.integer "state", default: 1, comment: "钱包状态 0 1 启用"
+    t.bigint "amount_qb", default: 0, comment: "登记qb数量"
+    t.bigint "remained_qb", default: 0, comment: "剩余qb数量"
+    t.integer "priority", default: 100, null: false, comment: "优先级"
+    t.timestamp "amount_updated_at", default: "2019-11-20 19:19:27", null: false, comment: "周期更新时间"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id", "c_no", "type"], name: "index_wallets_on_account_id_and_c_no_and_type", unique: true
     t.index ["account_id"], name: "index_wallets_on_account_id"
-    t.index ["c_no", "type"], name: "index_wallets_on_c_no_and_type", unique: true
   end
 
   add_foreign_key "account_type_services", "account_types"
